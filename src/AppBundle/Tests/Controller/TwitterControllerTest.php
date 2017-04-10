@@ -26,5 +26,4 @@ class TwitterControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/search');
     }
-
 }

@@ -41,5 +41,4 @@ class PrepareTableForFulltextSearchCommand extends ContainerAwareCommand
 
         $output->writeln('Index successfully generated :)');
     }
-
 }

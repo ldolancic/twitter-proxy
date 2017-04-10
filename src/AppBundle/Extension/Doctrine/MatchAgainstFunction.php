@@ -9,7 +9,8 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
  * @example by https://gist.github.com/1234419 Jérémy Hubert
  * "MATCH_AGAINST" "(" {StateFieldPathExpression ","}* InParameter {Literal}? ")"
  */
-class MatchAgainstFunction extends FunctionNode {
+class MatchAgainstFunction extends FunctionNode
+{
     public $columns = array();
     public $needle;
     public $mode;
@@ -20,8 +21,7 @@ class MatchAgainstFunction extends FunctionNode {
         do {
             $this->columns[] = $parser->StateFieldPathExpression();
             $parser->match(Lexer::T_COMMA);
-        }
-        while ($parser->getLexer()->isNextToken(Lexer::T_IDENTIFIER));
+        } while ($parser->getLexer()->isNextToken(Lexer::T_IDENTIFIER));
         $this->needle = $parser->InParameter();
         while ($parser->getLexer()->isNextToken(Lexer::T_STRING)) {
             $this->mode = $parser->Literal();
@@ -38,7 +38,7 @@ class MatchAgainstFunction extends FunctionNode {
         }
         $query = "MATCH(" . $haystack .
             ") AGAINST (" . $this->needle->dispatch($sqlWalker);
-        if($this->mode) {
+        if ($this->mode) {
             $query .= " " . $this->mode->dispatch($sqlWalker) . " )";
         } else {
             $query .= " )";

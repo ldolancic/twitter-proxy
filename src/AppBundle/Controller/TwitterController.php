@@ -131,7 +131,7 @@ class TwitterController extends Controller
 
         $existingTweets = $em->getRepository('AppBundle:Tweet')->findByTwitterUser($twitterUser);
 
-        $existingTweets = array_map(function($tweet) {
+        $existingTweets = array_map(function ($tweet) {
             return $tweet->getContent();
         }, $existingTweets);
 
@@ -147,5 +147,4 @@ class TwitterController extends Controller
             $em->persist($tweet);
         }
     }
-
 }

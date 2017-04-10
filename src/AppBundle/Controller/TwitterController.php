@@ -107,6 +107,7 @@ class TwitterController extends Controller
 
         $freshTweets = json_decode($tweetsResponse->getContent());
 
+        // This could be separated as a queue job
         $this->saveNewTweetsOnly($freshTweets, $twitterUser);
 
         $em->flush();

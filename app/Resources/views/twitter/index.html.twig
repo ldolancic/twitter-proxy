@@ -1,0 +1,13 @@
+{% extends 'layouts/main.html.twig' %}
+
+{% block body %}
+    <h1>Twitter users catalog</h1>
+
+    <ul>
+        {% for user in twitterUsers %}
+            <li>
+                <a href="{{ url('twitter_user_page', {username: user.screenName}) }}">{{ user.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

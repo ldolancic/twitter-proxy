@@ -1,0 +1,31 @@
+{% extends 'layouts/main.html.twig' %}
+
+{% block body %}
+    <h1>Twitter search</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    {% if searchResults is defined %}
+        <ul>
+            {% for searchResult in searchResults %}
+                <li>{{ searchResult.content }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if totalResults is defined and totalResults > resultsPerPage %}
+        <ul class="pagination">
+            {% for pageNumber in 1 .. (totalResults / resultsPerPage)|round(0, 'ceil') %}
+                <li>
+                    <a href="{{ url('search', {page: pageNumber, query: queryString, user: queryUser}) }}">
+                        {{ pageNumber }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+{% endblock %}

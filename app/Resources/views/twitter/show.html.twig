@@ -1,0 +1,13 @@
+{% extends 'layouts/main.html.twig' %}
+
+{% block body %}
+    <h1>{{ twitterUser.name }}</h1>
+
+    <ul>
+        {% for tweet in tweets %}
+            <li>
+                {{ tweet.text }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

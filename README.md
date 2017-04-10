@@ -16,7 +16,7 @@ $ git clone https://github.com/ldolancic/twitter-proxy.git
 Go to apps.twitter.com and create a new Twitter app. Then, on composer update,
 enter the app credentials.
 ```sh
-$ composer update
+$ composer install
 ```
 3) Create database
 ```sh

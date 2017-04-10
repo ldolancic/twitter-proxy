@@ -10,19 +10,25 @@ Installation
 ```sh
 $ git clone https://github.com/ldolancic/twitter-proxy.git
 ```
-If you don't want to use git, you could simply download the zip file of this project.
 
-2) Install dependencies
+2) Install dependencies and specify parameters
+
+Go to apps.twitter.com and create a new Twitter app. Then, on composer update,
+enter the app credentials.
 ```sh
 $ composer update
 ```
+3) Create database
+```sh
+$ php bin/console doctrine:database:create
+```
 
-3) Update database schema
+4) Update database schema
 ```sh
 $ php bin/console doctrine:schema:update --force
 ```
 
-4) Prepare tweets table for fulltext search
+5) Prepare tweets table for fulltext search
 ```sh
 $ php bin/console fulltext-search:prepare-tweets
 ```
